@@ -15,4 +15,23 @@
         $( ".fancybox").fancybox();
     });
 </script>
+<script>
+  document.addEventListener('keydown', function(e) {
+    // Ignore if input, textarea or contenteditable element is focused
+    let activeElement = document.activeElement;
+    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable) {
+      return;
+    }
+
+    // Example: Use '/' key to focus search input
+    if (e.key === '/') {
+      e.preventDefault(); // prevent the '/' from being inserted anywhere
+      
+      let searchInput = document.querySelector('.search-form-input');
+      if (searchInput) {
+        searchInput.focus();
+      }
+    }
+  });
+</script>
 <?php echo $this->options->beforeBodyClose; ?>
